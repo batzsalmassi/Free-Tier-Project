@@ -37,3 +37,5 @@ output "availability_zone_2" {
 output "s3_endpoint" {
   value = module.endpoints.s3_endpoint_id
 }
+
+
