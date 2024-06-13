@@ -7,6 +7,7 @@ variable "aws_region" {
 variable "name" {
   description = "Name of the VPC"
   type        = string
+  default     = "main-VPC"
 }
 
 variable "cidr" {
@@ -32,3 +33,49 @@ variable "tags" {
   type        = map(string)
   default     = {}
 }
+
+variable "ec2_admin_user" {
+  description = "EC2 admin username"
+  type = string
+}
+
+variable "s3_admin_user" {
+  description = "S3 Admin username"
+  type = string
+}
+
+variable "global_admin_user" {
+  description = "Global Admin username"
+  type = string
+}
+
+variable "ec2_admins_group" {
+  description = "ec2 admins group"
+  type = string
+}
+
+variable "s3_admins_group" {
+  description = "s3 admins group"
+  type = string
+}
+
+variable "global_admins_group" {
+  description = "global admins group"
+  type = string
+}
+
+variable "s3_admin_pass" {
+  description = "s3 admin pass"
+  type = string
+}
+
+variable "ec2_admin_pass" {
+  description = "ec2 admin pass"
+  type = string
+}
+
+variable "global_admin_pass" {
+  description = "global admin pass"
+  type = string
+}
+
