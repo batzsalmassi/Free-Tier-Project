@@ -29,3 +29,19 @@ module "endpoints" {
   subnet_id         = module.vpc.private_subnet_ids[1]
   security_group_ids = [module.security_groups.private_security_group_id]
 }
+
+module "iam" {
+  source = "./modules/iam"
+
+  ec2_admin_user = var.ec2_admin_user
+  ec2_admins_group = var.ec2_admins_group
+  ec2_admin_pass = var.ec2_admin_pass
+
+  global_admin_user = var.global_admin_user
+  global_admins_group = var.global_admins_group
+  global_admin_pass = var.global_admin_pass
+
+  s3_admin_user = var.s3_admin_user
+  s3_admins_group = var.s3_admins_group
+  s3_admin_pass = var.s3_admin_pass
+}
