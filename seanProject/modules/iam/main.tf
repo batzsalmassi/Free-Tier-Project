@@ -51,7 +51,7 @@ resource "aws_iam_user" "s3_admin_user" {
 
 resource "aws_iam_user_login_profile" "s3_admin_login_profile" {
   user = aws_iam_user.s3_admin_user.name
-  password_reset_required = false
+  password_reset_required = true
 }
 
 resource "aws_iam_user_group_membership" "s3_admin_user_group" {
