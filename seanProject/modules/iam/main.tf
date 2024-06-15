@@ -59,20 +59,6 @@ resource "aws_iam_user_group_membership" "s3_admin_user_group" {
   groups = [aws_iam_group.s3_admins_group.name]
 }
 
-resource "aws_iam_user_policy" "s3_admin_user_policy" {
-  name   = "S3UserPolicy"
-  user   = aws_iam_user.s3_admin_user.name
-  policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Effect = "Allow"
-        Action = ["s3:*"]
-        Resource = "*"
-      }
-    ]
-  })
-}
 
 resource "aws_iam_user" "ec2_admin_user" {
   name = var.ec2_admin_user
@@ -88,20 +74,6 @@ resource "aws_iam_user_group_membership" "ec2_admin_user_group" {
   groups = [aws_iam_group.ec2_admins_group.name]
 }
 
-resource "aws_iam_user_policy" "ec2_admin_user_policy" {
-  name   = "EC2UserPolicy"
-  user   = aws_iam_user.ec2_admin_user.name
-  policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Effect = "Allow"
-        Action = ["ec2:*"]
-        Resource = "*"
-      }
-    ]
-  })
-}
 
 resource "aws_iam_user" "global_admin_user" {
   name = var.global_admin_user
@@ -117,23 +89,9 @@ resource "aws_iam_user_group_membership" "global_admin_user_group" {
   groups = [aws_iam_group.global_admins_group.name]
 }
 
-resource "aws_iam_user_policy" "global_admin_user_policy" {
-  name   = "GlobalUserPolicy"
-  user   = aws_iam_user.global_admin_user.name
-  policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Effect = "Allow"
-        Action = "*"
-        Resource = "*"
-      }
-    ]
-  })
-}
-
 resource "aws_iam_role" "ec2_role" {
   name = "PublicInstance1Role"
+  path = "/"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
@@ -149,9 +107,10 @@ resource "aws_iam_role" "ec2_role" {
   })
 }
 
+
 resource "aws_iam_role_policy" "ec2_role_policy" {
   name   = "DockerAutomator"
-  role   = aws_iam_role.ec2_role.name
+  role   = aws_iam_role.ec2_role.id
   policy = jsonencode({
     Version = "2012-10-17"
     Statement = [
@@ -171,5 +130,5 @@ resource "aws_iam_role_policy" "ec2_role_policy" {
 
 resource "aws_iam_instance_profile" "ec2_instance_profile" {
   name = "PublicInstanceProfile1"
-  role = aws_iam_role.ec2_role.name
+  role = aws_iam_role.ec2_role.id
 }
