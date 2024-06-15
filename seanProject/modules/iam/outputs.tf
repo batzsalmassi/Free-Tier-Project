@@ -28,9 +28,9 @@ output "global_admins_group" {
   value       = aws_iam_group.global_admins_group.name
 }
 
-output "ec2_role" {
+output "ec2_role_arn" {
   description = "The name of the IAM Role for assume role for EC2"
-  value       = aws_iam_role.ec2_role.name
+  value       = aws_iam_role.ec2_role.arn
 }
 
 output "ec2_instance_profile" {
