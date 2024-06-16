@@ -3,7 +3,6 @@ resource "aws_vpc" "mainVPC" {
   enable_dns_support   = var.enable_dns_support
   enable_dns_hostnames = var.enable_dns_hostnames
 
-
   tags = merge(
     {
       Name = format("%s-vpc", var.name)
@@ -67,13 +66,9 @@ resource "aws_route_table" "public-rt" {
   }
 }
 
-resource "aws_route_table_association" "public_subnet_1" {
-  subnet_id      = aws_subnet.public[0].id
-  route_table_id = aws_route_table.public-rt.id
-}
-
-resource "aws_route_table_association" "public_subnet_2" {
-  subnet_id      = aws_subnet.public[1].id
+resource "aws_route_table_association" "public_subnet" {
+  count = var.public_subnet_count
+  subnet_id      = aws_subnet.public[count.index].id
   route_table_id = aws_route_table.public-rt.id
 }
 
@@ -85,12 +80,8 @@ resource "aws_route_table" "private-rt" {
   }
 }
 
-resource "aws_route_table_association" "private_subnet_1" {
-  subnet_id      = aws_subnet.private[0].id
-  route_table_id = aws_route_table.private-rt.id
-}
-
-resource "aws_route_table_association" "private_subnet_2" {
-  subnet_id      = aws_subnet.private[1].id
+resource "aws_route_table_association" "private_subnet" {
+  count = var.private_subnet_count
+  subnet_id      = aws_subnet.private[count.index].id
   route_table_id = aws_route_table.private-rt.id
 }
