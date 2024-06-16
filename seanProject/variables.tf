@@ -28,6 +28,18 @@ variable "enable_dns_hostnames" {
   default     = true                              # Default value for the variable
 }
 
+variable "public_subnet_count" {
+  description = "Number of public subnets"
+  type        = number
+  default     = 2
+}
+
+variable "private_subnet_count" {
+  description = "Number of private subnets"
+  type        = number
+  default     = 2
+}
+
 variable "tags" {
   description = "Tags to apply to resources"  # Description of the variable
   type        = map(string)                    # Type of the variable
@@ -77,4 +89,49 @@ variable "ec2_admin_pass" {
 variable "global_admin_pass" {
   description = "global admin pass"  # Description of the variable
   type = string                      # Type of the variable
+}
+
+variable "os" {
+  description = "OS for instance 1"
+  type        = string
+  default     = "AmazonLinux"
+}
+
+variable "key_name" {
+  description = "Key pair name"
+  type        = string
+}
+
+variable s3_bucket {
+  description = "S3 bucket for user data files"
+  type        = string
+}
+
+variable "ec2_public_1_user_data_path" {
+  description = "Path to the user data file for EC2 instance 1"
+  type        = string
+}
+
+variable instance_type {
+  description = "The instance type"
+  type        = string
+  default     = "t2.micro"
+}
+
+variable "desired_capacity" {
+  description = "The desired capacity of the group"
+  type        = number
+  default     = 2
+}
+
+variable "max_size" {
+  description = "The maximum size of the group"
+  type        = number
+  default     = 4
+}
+
+variable "min_size" {
+  description = "The minimum size of the group"
+  type        = number
+  default     = 1
 }

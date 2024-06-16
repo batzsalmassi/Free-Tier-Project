@@ -3,19 +3,19 @@ output "vpc_id" {
 }
 
 output "public_subnet_1" {
-  value = module.vpc.public_subnet_ids[0]
+  value = module.vpc.public_subnets[0]
 }
 
 output "public_subnet_2" {
-  value = module.vpc.public_subnet_ids[1]
+  value = module.vpc.public_subnets[1]
 }
 
 output "private_subnet_1" {
-  value = module.vpc.private_subnet_ids[0]
+  value = module.vpc.private_subnets[0]
 }
 
 output "private_subnet_2" {
-  value = module.vpc.private_subnet_ids[1]
+  value = module.vpc.private_subnets[1]
 }
 
 output "public_security_group" {
@@ -84,4 +84,25 @@ output "private-route-table" {
 
 output "internet_gateway_id" {
   value = module.vpc.internet_gateway_id
+}
+
+output "ec2_instance_1_public" {
+  value = module.ec2Insatance1Public.instance_id
+}
+
+output "web_server_sg" {
+  value = module.web_server_sg.security_group_id
+}
+
+output "alb_arn" {
+  value = module.alb.lb_arn
+}
+
+output "alb_dns_name" {
+  value = module.alb.alb_dns_name
+  
+}
+
+output "target_group_arn" {
+  value = module.alb.target_group_arn
 }
