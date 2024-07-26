@@ -106,3 +106,7 @@ output "alb_dns_name" {
 output "target_group_arn" {
   value = module.alb.target_group_arn
 }
+
+output "s3_bucket" {
+  value = module.launch_configuration.s3_bucket
+}

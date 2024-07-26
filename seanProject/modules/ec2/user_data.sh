@@ -25,10 +25,10 @@ mkdir -p /home/ec2-user/app/html/css
 
 # Download files into the proper directory
 echo "Downloading index.html from S3"
-aws s3 cp s3://web-interface-bucket-test-sean-salmassi-v2/webpage2/index.html /home/ec2-user/app/html/index.html
+aws s3 cp s3://${s3_bucket}/webpage2/index.html /home/ec2-user/app/html/index.html
 
 echo "Downloading styles.css from S3"
-aws s3 cp s3://web-interface-bucket-test-sean-salmassi-v2/webpage2/css/styles.css /home/ec2-user/app/html/css/styles.css
+aws s3 cp s3://${s3_bucket}/webpage2/css/styles.css /home/ec2-user/app/html/css/styles.css
 
 # Create Dockerfile
 echo "Creating Dockerfile"

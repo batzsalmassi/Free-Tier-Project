@@ -30,7 +30,7 @@ resource "aws_launch_configuration" "web-server-lc" {
     key_name = var.key_name
     iam_instance_profile = var.iam_instance_profile
     security_groups = var.security_group_ids
-    user_data_base64     = base64encode(templatefile("${path.module}/user_data.sh", { s3_bucket = var.s3-bucket }))
+    user_data_base64     = base64encode(templatefile("${path.module}/user_data.sh", { s3_bucket = var.s3_bucket }))
     
     lifecycle {
         create_before_destroy = true

@@ -7,9 +7,11 @@ resource "aws_instance" "ec2_instance" {
   subnet_id                   = var.subnet_id
   availability_zone           = var.availability_zone
   
-  user_data                   = var.user_data != "" ? var.user_data : null
-
+  user_data = var.user_data != "" ? templatefile("${path.module}/user_data.sh", { s3_bucket = var.s3_bucket }) : null
+  
   tags = {
     Name = "${var.os}-${var.subnet_id}-${var.availability_zone}-Instance"
   }
 }
+
+
