@@ -139,7 +139,7 @@ module "ec2Insatance1Public" {
   iam_instance_profile = module.iam.ec2_instance_profile
   security_group_id    = module.security_group_public.security_group_id
   s3_bucket            = var.s3_bucket
-  user_data            = base64encode(templatefile("${path.module}/modules/ec2/user_data.sh", {}))  # Pass an empty map as the second argument
+  user_data = base64encode(templatefile("${path.module}/modules/ec2/user_data.sh", { s3_bucket = var.s3_bucket }))
 }
 
 module "web_server_sg" {
@@ -205,7 +205,7 @@ module "launch_configuration" {
   key_name = var.key_name
   iam_instance_profile = module.iam.ec2_instance_profile
   security_group_ids = [module.web_server_sg.security_group_id]
-  s3-bucket = var.s3_bucket
+  s3_bucket = var.s3_bucket
 }
 
 module "autoscaling" {

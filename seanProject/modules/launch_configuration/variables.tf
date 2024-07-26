@@ -19,7 +19,7 @@ variable "security_group_ids" {
     type        = list(string)
 }
 
-variable "s3-bucket" {
+variable "s3_bucket" {
     description = "The S3 bucket for user data files"
     type        = string
 }
