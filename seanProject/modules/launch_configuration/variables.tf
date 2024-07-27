@@ -23,3 +23,13 @@ variable "s3_bucket" {
     description = "The S3 bucket for user data files"
     type        = string
 }
+
+variable "docker_token" {
+    description = "The Docker token for the instance"
+    type        = string
+}
+
+variable "docker_username" {
+    description = "The Docker username for the instance"
+    type        = string
+}

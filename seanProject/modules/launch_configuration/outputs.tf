@@ -5,3 +5,7 @@ output "launch_configuration_id" {
 output "s3_bucket" {
   value = var.s3_bucket
 }
+
+output "docker_username" {
+  value = var.docker_username
+}
