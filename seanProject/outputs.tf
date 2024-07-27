@@ -107,6 +107,6 @@ output "target_group_arn" {
   value = module.alb.target_group_arn
 }
 
-output "s3_bucket" {
-  value = module.launch_configuration.s3_bucket
+output "docker_username" {
+  value = module.launch_configuration.docker_username
 }
