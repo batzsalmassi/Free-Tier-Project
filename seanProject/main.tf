@@ -205,7 +205,8 @@ module "launch_configuration" {
   key_name = var.key_name
   iam_instance_profile = module.iam.ec2_instance_profile
   security_group_ids = [module.web_server_sg.security_group_id]
-  s3_bucket = var.s3_bucket
+  docker_token = var.docker_token
+  docker_username = var.docker_username
 }
 
 module "autoscaling" {

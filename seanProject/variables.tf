@@ -135,3 +135,13 @@ variable "min_size" {
   type        = number
   default     = 1
 }
+
+variable "docker_token" {
+  description = "Docker token"
+  type        = string
+}
+
+variable "docker_username" {
+  description = "Docker username"
+  type        = string
+}
